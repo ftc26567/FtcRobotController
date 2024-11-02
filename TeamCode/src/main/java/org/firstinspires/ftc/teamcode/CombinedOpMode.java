@@ -256,7 +256,14 @@ public class CombinedOpMode extends LinearOpMode {
                 intake.setPower(INTAKE_DEPOSIT);
             }
 
-
+            /* Zeroes the arm.
+            Make sure you ONLY hit this if a) the arm is fully down in the intake position! Try not
+            to use this unless you forgot to put the arm in the zero position when you turned on the
+            bot
+             */
+            if (gamepad2.x) {
+                armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            }
 
             /* Here we implement a set of if else statements to set our arm to different scoring positions.
             We check to see if a specific button is pressed, and then move the arm (and sometimes
